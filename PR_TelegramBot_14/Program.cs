@@ -25,6 +25,14 @@ builder.Services.AddScoped<AzureTranslatorService>(sp =>
     return new AzureTranslatorService(endpoint, apikey, region);
 });
 
+string photoEndpoint = builder.Configuration.GetValue<string>("AzurePhotoDescription:Endpoint");
+string photoApiKey = builder.Configuration.GetValue<string>("AzurePhotoDescription:ApiKey");
+
+builder.Services.AddScoped<AzurePhotoService>(sp =>
+{
+    return new AzurePhotoService(photoEndpoint, photoApiKey);
+});
+
 builder.Services.AddControllers().AddNewtonsoftJson();
 
 builder.Services.AddScoped<UpdateHandlerService>();
