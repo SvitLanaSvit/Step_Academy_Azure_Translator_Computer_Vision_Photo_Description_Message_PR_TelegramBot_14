@@ -14,6 +14,8 @@ namespace PR_TelegramBot_14.Services
             this.apiKey = apiKey;
         }
 
+        //Use without Stream and changing in UpdateHandlerService in method (BotOnMessageReceived())
+
         public async Task<string> GetImageDescriptionAsync(string imageUrl)
         {
             var client = CreateVisionClient(apiKey, endpoint);
@@ -27,6 +29,8 @@ namespace PR_TelegramBot_14.Services
 
             return description ?? "Unable to generate description.";
         }
+
+        //Use with Stream and changing in UpdateHandlerService in method (BotOnMessageReceived())
 
         //public async Task<string> GetImageDescriptionAsync(Stream stream)
         //{
